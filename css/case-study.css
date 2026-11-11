@@ -1,0 +1,318 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--black); /* Large frame: black surround, gray container */
+  font-family: var(--font-family);
+  font-size: var(--p-size);
+  font-weight: 400;
+  line-height: normal;
+  color: var(--black);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+h1,
+h2,
+p,
+ul,
+figure {
+  margin: 0;
+}
+
+/* ------------------------------------------------------------------ page */
+.page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  background: var(--gray-light);
+}
+.page > *,
+.page main > * {
+  width: 100%;
+}
+.page main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+}
+
+/* ---------------------------------------------------------------- header */
+.site-header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto minmax(0, 1fr) auto;
+  height: calc(var(--unit) * 3);
+  background: var(--gray-light);
+}
+.header-bar {
+  display: grid;
+  grid-template-rows: repeat(3, var(--unit));
+  width: var(--unit);
+  overflow: clip;
+}
+.header-bar--left {
+  background: var(--black);
+}
+.header-bar--right {
+  background: var(--primary-color);
+}
+.header-bar > * {
+  width: var(--unit);
+  height: var(--unit);
+}
+.header-bar .cell-light {
+  background: var(--gray-light);
+}
+.header-bar .cell-dark {
+  background: #000;
+}
+
+.header-filler {
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  max-width: 1024px;
+  min-width: 10px;
+}
+.header-filler > * {
+  height: var(--unit);
+}
+.header-filler > :nth-child(odd) {
+  background: var(--gray-light);
+}
+.header-filler > :nth-child(even) {
+  background: var(--primary-color);
+}
+
+.site-title {
+  align-self: center;
+  padding: var(--title-box-padding);
+  border: 8px solid black;
+  background: #fff;
+  color: #000;
+  font-size: var(--h1-size);
+  font-weight: 100;
+  line-height: normal;
+  text-align: center;
+  text-transform: capitalize;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.site-title-info {
+  font-size: 1.33rem;
+  font-weight: 900;
+}
+.site-title:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.page > header,
+.page main,
+.page > footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ----------------------------------------------------------------- tiles */
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--h2-size);
+  padding: 30px 0;
+}
+
+.section-label {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  height: var(--unit);
+  padding: 10px var(--label-padding-right) 10px var(--label-padding-left);
+  background: var(--primary-color);
+  border-radius: 0 var(--label-corner-radius) var(--label-corner-radius) 0;
+  color: #fff;
+  font-size: var(--h2-size);
+  font-weight: 600;
+  line-height: normal;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+/* Paragraph tile: one centered text column beside/below the label */
+.tile__content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 0 var(--label-padding-right);
+}
+.tile__text {
+  flex: 1 0 0;
+  min-width: 0;
+  max-width: 500px;
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+.tile__text > * + * {
+  margin-top: 1.2em;
+  margin-top: 1lh;
+} /* blank line between paragraphs, as in Figma */
+.tile__text ul {
+  padding-left: 1.25em;
+  margin-top: 0;
+}
+.tile__text a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-position: from-font;
+  overflow-wrap: anywhere;
+}
+
+/* Artifact tile: text + square image that wrap when the row gets narrow */
+.tile--artifact .tile__text {
+  min-width: 300px;
+}
+.tile__figure {
+  flex: 1 0 0;
+  min-width: 300px;
+  min-height: 300px;
+  aspect-ratio: 1;
+}
+.tile__figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Paragraphs tile: paragraphs flow into columns as width allows */
+.paragraphs {
+  column-width: 400px;
+  column-gap: 0;
+}
+.paragraph {
+  display: flex;
+  justify-content: center;
+  padding: var(--p-size);
+  break-inside: avoid;
+}
+.paragraph p {
+  flex: 1 0 0;
+  min-width: 0;
+  max-width: 500px;
+  text-wrap: pretty;
+  overflow-wrap: anywhere;
+}
+.paragraph a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
+/* ------------------------------------------------ tools / reading lists */
+.thumb-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 30px 0;
+  background: var(--background-color);
+}
+.thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 18px;
+  margin: 0;
+  padding: 10px;
+  list-style: none;
+}
+.thumb {
+  display: grid;
+  gap: 8px;
+  padding: var(--p-size);
+  border: 1px solid var(--black);
+  border-radius: var(--p-size);
+  background: var(--background-color);
+  text-align: center;
+  text-wrap: pretty;
+  overflow: clip;
+}
+.thumb img {
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.thumb--tool {
+  border-width: 0.25px;
+  padding: 14px;
+} /* 14px (Figma: 16px) so all four cards fit one row in the 1000px container */
+.thumb--tool img {
+  width: 200px;
+  height: 200px;
+}
+
+.thumb--large {
+  width: 300px;
+  max-width: 100%;
+  align-content: start;
+}
+.thumb--large img {
+  width: 100%;
+  height: 428px;
+}
+
+/* ----------------------------------------------------------------- footer */
+.site-footer__rainbow {
+  height: 8px;
+  background: linear-gradient(
+    90deg,
+    var(--red) 0%,
+    var(--orange) 15.87%,
+    var(--yellow) 32.698%,
+    var(--green) 48.564%,
+    var(--turquoise) 62.025%,
+    var(--blue) 77.891%,
+    var(--purple) 93.75%
+  );
+}
+.site-footer__bar {
+  display: flex;
+  justify-content: center;
+  padding: 0 8px;
+  background: var(--black);
+}
+.socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--title-box-stroke-weight);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.socials a {
+  display: block;
+}
+.socials a:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+.socials img {
+  width: 44px;
+  object-fit: cover;
+}

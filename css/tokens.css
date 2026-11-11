@@ -1,0 +1,32 @@
+/* Design tokens from the Neurospicy Info Web Figma file.
+   Figma variable names such as "--gray--light" are normalized to --gray-light. */
+:root {
+  /* color */
+  --black: #070707;
+  --gray-light: #e6e6e6;
+  --red: #ce3043;
+  --orange: #ff9800;
+  --yellow: #caaf27;
+  --green: #4caf50;
+  --turquoise: #009688;
+  --blue: #044470;
+  --purple: #63299b;
+  --primary-color: var(--black);
+  --background-color: var(--gray-light);
+
+  /* type */
+  --font-family: "Lexend Deca", system-ui, sans-serif;
+  --h1-size: 24px;
+  --h2-size: 24px;
+  --p-size: 16px;
+
+  /* layout */
+  --label-padding-left: 13px;
+  --label-padding-right: 26px;
+  --label-corner-radius: 26px;
+  --title-box-stroke-weight: 14px;
+  --title-box-padding: 16px;
+  --unit: 52px;            /* header / label module */
+  --page-max: 1000px;      /* "Container" width on the Large frame */
+  --section-gap: 20px;
+}
